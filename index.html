@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jorah Aslan Afandi | Profile</title>
+
+  <style>
+    /* =========================
+       RESET & BASE
+    ========================== */
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --linkedin-blue: #0a66c2;
+      --text: #191919;
+      --muted: #666666;
+      --border: #e0e0e0;
+      --background: #f3f2ef;
+      --card: #ffffff;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
+      line-height: 1.35;
+    }
+
+    body {
+      min-width: 320px;
+    }
+
+    /* Keep the experience close to a phone-width layout */
+    .mobile-page {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background: var(--background);
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* =========================
+       TOP LOGIN BAR
+    ========================== */
+    .login-bar {
+      height: 58px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .linkedin-logo {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+    }
+
+    .login-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .login-actions button {
+      appearance: none;
+      border: none;
+      background: transparent;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 38px;
+      padding: 0 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .login-button {
+      color: var(--linkedin-blue);
+    }
+
+    .join-button {
+      color: var(--linkedin-blue);
+      border: 1px solid var(--linkedin-blue) !important;
+    }
+
+    /* =========================
+       PROFILE HEADER
+    ========================== */
+    .profile-card {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cover-photo {
+      width: 100%;
+      height: 145px;
+      object-fit: cover;
+    }
+
+    .profile-content {
+      padding: 0 20px 20px;
+      position: relative;
+    }
+
+    .profile-picture {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #ffffff;
+      margin-top: -53px;
+      background: #dddddd;
+    }
+
+    .profile-main {
+      margin-top: 12px;
+    }
+
+    .profile-name-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 5px;
+    }
+
+    .profile-name {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .pronouns,
+    .degree {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .headline {
+      margin: 6px 0 2px;
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    .institution {
+      margin: 2px 0;
+      color: #444;
+      font-size: 14px;
+    }
+
+    .connections {
+      display: inline-block;
+      margin-top: 9px;
+      color: #0a66c2;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .mutual-connections {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 13px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .mutual-avatars {
+      display: flex;
+      min-width: 46px;
+    }
+
+    .mutual-avatars img {
+      width: 29px;
+      height: 29px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ffffff;
+    }
+
+    .mutual-avatars img + img {
+      margin-left: -10px;
+    }
+
+    .profile-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .message-button {
+      flex: 1;
+      min-height: 42px;
+      border: none;
+      border-radius: 22px;
+      background: var(--linkedin-blue);
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .more-button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid #777;
+      border-radius: 50%;
+      background: #ffffff;
+      font-size: 21px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* =========================
+       GENERAL SECTIONS
+    ========================== */
+    .section {
+      background: var(--card);
+      margin-top: 8px;
+      padding: 22px 20px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      margin: 0 0 16px;
+      font-size: 21px;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .about-text {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.45;
+      color: #333;
+    }
+
+    /* =========================
+       EXPERIENCE & EDUCATION
+    ========================== */
+    .entry {
+      display: flex;
+      gap: 13px;
+      padding: 0 0 22px;
+    }
+
+    .entry + .entry {
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+    }
+
+    .entry:last-child {
+      padding-bottom: 0;
+    }
+
+    .entry-logo {
+      width: 56px;
+      height: 56px;
+      flex: 0 0 56px;
+      object-fit: contain;
+      background: #f5f5f5;
+      border-radius: 3px;
+    }
+
+    .entry-body {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .entry-title {
+      margin: 0 0 2px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .entry-company,
+    .entry-school {
+      margin: 0;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .entry-date,
+    .entry-location,
+    .grade {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .entry-description {
+      margin: 12px 0 0;
+      font-size: 14px;
+      line-height: 1.45;
+      color: #333;
+    }
+
+    .entry-description ul {
+      padding-left: 18px;
+      margin: 9px 0 0;
+    }
+
+    .entry-description li {
+      margin-bottom: 8px;
+    }
+
+    .entry-description li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* =========================
+       HONORS
+    ========================== */
+    .honor-entry {
+      padding-bottom: 20px;
+    }
+
+    .honor-entry:last-child {
+      padding-bottom: 0;
+    }
+
+    .honor-title {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .honor-organization {
+      margin: 3px 0 0;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .honor-date {
+      margin: 3px 0 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .honor-description {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .honor-description li {
+      margin-bottom: 8px;
+    }
+
+    /* =========================
+       CERTIFICATION
+    ========================== */
+    .certification {
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
+    }
+
+    .cert-placeholder {
+      width: 56px;
+      height: 56px;
+      flex: 0 0 56px;
+      border-radius: 4px;
+      background: #f1f1f1;
+      border: 1px solid #dddddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+      font-size: 12px;
+      text-align: center;
+      padding: 4px;
+    }
+
+    .certification h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .certification p {
+      margin: 3px 0 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .show-credential {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 16px;
+      border: 1px solid #666;
+      border-radius: 20px;
+      color: #333;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* =========================
+       MOBILE REFINEMENTS
+    ========================== */
+    @media (max-width: 380px) {
+      .profile-name {
+        font-size: 23px;
+      }
+
+      .login-actions button {
+        padding: 0 8px;
+      }
+
+      .section,
+      .profile-content {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="mobile-page">
+
+    <!-- TOP LOGIN / ACCESS BAR -->
+    <nav class="login-bar" aria-label="Profile access navigation">
+      <img
+        src="linked-logo.png"
+        alt="LinkedIn"
+        class="linkedin-logo"
+      />
+
+      <div class="login-actions">
+        <button class="login-button" type="button">Log in</button>
+        <button class="join-button" type="button">Join now</button>
+      </div>
+    </nav>
+
+    <!-- PROFILE HEADER -->
+    <section class="profile-card">
+      <img
+        src="header.jpg"
+        alt="Profile header"
+        class="cover-photo"
+      />
+
+      <div class="profile-content">
+        <img
+          src="profile-picture.jpg"
+          alt="Jorah Aslan Afandi"
+          class="profile-picture"
+        />
+
+        <div class="profile-main">
+          <div class="profile-name-row">
+            <h1 class="profile-name">Jorah Aslan Afandi</h1>
+            <span class="pronouns">He/Him · 1st</span>
+          </div>
+
+          <p class="headline">Theatrical Director</p>
+
+          <p class="institution">
+            Rumah Aksarabumi  ⋅  Academy of Performing Arts in Prague
+          </p>
+
+          <a href="#" class="connections">500+ connections</a>
+
+          <div class="mutual-connections">
+            <div class="mutual-avatars" aria-hidden="true">
+              <img src="mutual1.jpg" alt="" />
+              <img src="mutual2.jpg" alt="" />
+            </div>
+
+            <span>
+              Jordan Basudewa, Leonardo Rahadian, and 5 other mutual connections
+            </span>
+          </div>
+
+          <div class="profile-actions">
+            <button class="message-button" type="button">
+              Message
+            </button>
+
+            <button
+              class="more-button"
+              type="button"
+              aria-label="More options"
+            >
+              ⋮
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section">
+      <h2 class="section-title">About</h2>
+
+      <p class="about-text">
+        Theatrical Producer and Director for Aksarabumi with extensive portfolio
+        in other multimedia production, initially graduated from FAMU film
+        conservatory in Scriptwriting and Dramaturgy. Trained under traditional
+        European cinematic discipline with professional accolades in Scriptwriting,
+        Directing, and Creative Project Management.
+      </p>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section">
+      <h2 class="section-title">Experience</h2>
+
+      <!-- Experience 1 -->
+      <article class="entry">
+        <img
+          src="company1.jpg"
+          alt="Rumah Aksarabumi"
+          class="entry-logo"
+        />
+
+        <div class="entry-body">
+          <h3 class="entry-title">
+            Theatrical Producer and Director
+          </h3>
+
+          <p class="entry-company">
+            Rumah Aksarabumi · Full-time
+          </p>
+
+          <p class="entry-date">
+            Feb 2024 – Present · 8 mos
+          </p>
+
+          <p class="entry-location">
+            Jakarta, Indonesia
+          </p>
+
+          <div class="entry-description">
+            Artistic director and producer in independent
+            theatrical house dedicated to text-driven storytelling.
+
+            <ul>
+              <li>
+                Leading the production cycles of the house's major production.
+                Managing ensemble casting, venue architecture, budgeting, and
+                set design work flows.
+              </li>
+              <li>
+                Consulting expert for minor productions.
+              </li>
+              <li>
+                Script, block, and direct original theatrical plays
+                that merge universal physical theater techniques with narrative driven scripts.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Experience 2 -->
+      <article class="entry">
+        <img
+          src="company2.jpg"
+          alt="Aborrenta Art Studio"
+          class="entry-logo"
+        />
+
+        <div class="entry-body">
+          <h3 class="entry-title">
+            Creative Project Leader
+          </h3>
+
+          <p class="entry-company">
+            Aborrenta Art Studio · Full-time
+          </p>
+
+          <p class="entry-date">
+            Jan 2023 – Feb 2024 · 1 yr 1 mo
+          </p>
+
+          <p class="entry-location">
+            Jakarta, Indonesia
+          </p>
+
+          <div class="entry-description">
+            Project Leader for state-of-the-art multimedia studio specializing in
+            independent filmmaking and experimental visual arts.
+
+            <ul>
+              <li>
+                Managed production work flows for high concept multimedia
+                projects with teams of writers,
+                cinematographers, and set designers.
+              </li>
+              <li>
+                Oversaw studio's narrative slate, translating complex
+                conceptual briefs into market-ready screenplays and audio-visual
+                frameworks.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section">
+      <h2 class="section-title">Education</h2>
+
+      <article class="entry">
+        <img
+          src="education1.png"
+          alt="FAMU"
+          class="entry-logo"
+        />
+
+        <div class="entry-body">
+          <h3 class="entry-title">
+            Filmová a televizní fakulta Akademie múzických umění v Praze (FAMU)
+          </h3>
+
+          <p class="entry-school">
+            Bakalář (BcA.), Scenáristika a dramaturgie
+            (Scriptwriting &amp; Dramaturgy)
+          </p>
+
+          <p class="entry-date">
+            Sep 2019 – Jun 2022
+          </p>
+
+          <p class="grade">
+            Grade: 1.05/1.00
+          </p>
+
+          <div class="entry-description">
+            <ul>
+              <li>
+                Graduated Summa Cum Laude with a Red Diploma
+                (Prospěl(a) s vyznamenáním).
+              </li>
+              <li>
+                Recipient of the International Jury Special Mention for Best
+                Student Screenplay at the 62nd BRNO16 International Short Film
+                Festival for the graduation thesis short film.
+              </li>
+              <li>
+                Senior Script Assistant and Script Supervisor for a Czech-German
+                co-production feature film shot at Studio FAMU.
+              </li>
+              <li>
+                Assistant Director of multiple campus projects (mechanical
+                work flow, utilization of physical 16mm analog film
+                stock packages provisioned by Studio FAMU).
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- HONORS & AWARDS -->
+<section class="section">
+  <h2 class="section-title">Honors &amp; awards (2)</h2>
+
+  <!-- Honor 1 -->
+  <article class="entry">
+    <img
+      src="honors1.jpg"
+      alt="BRNO16 International Short Film Festival"
+      class="entry-logo"
+    />
+
+    <div class="entry-body">
+      <h3 class="entry-title">
+        International Jury Special Mention for Best Student Screenplay
+      </h3>
+
+      <p class="entry-company">
+        BRNO16 International Short Film Festival
+      </p>
+
+      <p class="entry-date">
+        October 2021
+      </p>
+
+      <p class="entry-description">
+        Awarded by the international jury at the 62nd edition of BRNO16 for
+        the original screenplay of the narrative thesis film
+        <em>Suriname 1890</em>. This production is associated with the
+        attainment of BcA., Scenáristika a dramaturgie at FAMU.
+      </p>
+    </div>
+  </article>
+
+  <!-- Honor 2 -->
+  <article class="entry">
+    <img
+      src="honors2.png"
+      alt="Jogja-NETPAC Asian Film Festival"
+      class="entry-logo"
+    />
+
+    <div class="entry-body">
+      <h3 class="entry-title">
+        Best Screenplay &amp; Special Jury Prize
+      </h3>
+
+      <p class="entry-company">
+        Jogja-NETPAC Asian Film Festival (JAFF)
+      </p>
+
+      <p class="entry-date">
+        Issued: Nov 2019
+      </p>
+
+      <p class="entry-description">
+        Awarded for outstanding narrative structure and subtextual worldbuilding
+        in an original screenplay analyzing historical Indonesian post-colonial
+        diaspora memory, <em>Dipandang Jauh, Meluruh</em> (Short Fiction Film,
+        2019).
+      </p>
+    </div>
+  </article>
+</section>
+
+<!-- LICENSES & CERTIFICATIONS -->
+<section class="section">
+  <h2 class="section-title">Licenses &amp; certifications (1)</h2>
+
+  <article class="certification">
+    <img
+      src="certi1.jpg"
+      alt="Czech Language Certificate Exam"
+      class="entry-logo"
+    />
+
+    <div>
+      <h3>Czech Language Certificate Exam (CCE) – B2 Level</h3>
+
+      <p>
+        ÚJOP UK – Institute for Language and Preparatory Studies,
+        Charles University
+      </p>
+
+      <p>
+        Issued: Jun 2018 • No Expiration Date
+      </p>
+    </div>
+  </article>
+</section>
+
+  </main>
+</body>
+</html>
